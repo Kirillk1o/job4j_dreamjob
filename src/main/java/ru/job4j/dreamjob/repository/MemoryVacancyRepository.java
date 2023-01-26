@@ -15,17 +15,17 @@ public class MemoryVacancyRepository implements VacancyRepository {
 
     public MemoryVacancyRepository() {
         save(new Vacancy(0, "Intern Java Developer",
-                "открытая вакансия для прохождения стажировки", now()));
+                "открытая вакансия для прохождения стажировки", now(), false));
         save(new Vacancy(0, "Junior Java Developer",
-                "открытая вакансия для джуна", now()));
+                "открытая вакансия для джуна", now(), false));
         save(new Vacancy(0, "Junior+ Java Developer",
-                "открытая вакансия для джуна с опытом", now()));
+                "открытая вакансия для джуна с опытом", now(), false));
         save(new Vacancy(0, "Middle Java Developer",
-                "открытая вакансия для мидла", now()));
+                "открытая вакансия для мидла", now(), false));
         save(new Vacancy(0, "Middle+ Java Developer",
-                "открытая вакансия для мидла от 2х лет опыта", now()));
+                "открытая вакансия для мидла от 2х лет опыта", now(), false));
         save(new Vacancy(0, "Senior Java Developer",
-                "открытая вакансия для синьора", now()));
+                "открытая вакансия для синьора", now(), false));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class MemoryVacancyRepository implements VacancyRepository {
         return vacancies.computeIfPresent(
                 vacancy.getId(), (id, oldVacancy) -> new Vacancy(
                         id, vacancy.getTitle(), vacancy.getDescription(),
-                        vacancy.getCreationDate())) != null;
+                        vacancy.getCreationDate(), vacancy.getVisible())) != null;
     }
 
     @Override
