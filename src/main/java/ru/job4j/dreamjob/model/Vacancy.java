@@ -19,6 +19,9 @@ public class Vacancy {
         this.creationDate = creationDate;
     }
 
+    public Vacancy() {
+    }
+
     public int getId() {
         return id;
     }
@@ -49,9 +52,6 @@ public class Vacancy {
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
-    }
-
-    public Vacancy() {
     }
 
     @Override
