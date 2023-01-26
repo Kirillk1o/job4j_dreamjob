@@ -1,14 +1,18 @@
 package ru.job4j.dreamjob.service;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Service;
 import ru.job4j.dreamjob.model.Vacancy;
 import ru.job4j.dreamjob.repository.VacancyRepository;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
+@ThreadSafe
 @Service
 public class SimpleVacancyService implements VacancyService {
+    AtomicInteger atomic = new AtomicInteger(1);
     private final VacancyRepository vacancyRepository;
 
     public SimpleVacancyService(VacancyRepository vacancyRepository) {

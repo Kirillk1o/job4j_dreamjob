@@ -1,12 +1,13 @@
 package ru.job4j.dreamjob.repository;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Vacancy;
 
 import java.util.*;
 
 import static java.time.LocalDateTime.now;
-
+@ThreadSafe
 @Repository
 public class MemoryVacancyRepository implements VacancyRepository {
     private int nextId = 1;

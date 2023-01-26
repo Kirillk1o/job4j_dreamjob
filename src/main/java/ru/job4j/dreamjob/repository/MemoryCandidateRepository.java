@@ -7,10 +7,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
+import java.util.concurrent.atomic.AtomicInteger;
+import net.jcip.annotations.ThreadSafe;
 import static java.time.LocalDateTime.now;
+@ThreadSafe
 @Repository
 public class MemoryCandidateRepository implements CandidateRepository {
+    private final AtomicInteger atomic = new AtomicInteger(1);
     private int nextId = 1;
     private final Map<Integer, Candidate> candidates = new HashMap<>();
 
