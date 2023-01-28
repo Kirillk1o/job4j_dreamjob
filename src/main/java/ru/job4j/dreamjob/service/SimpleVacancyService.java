@@ -12,7 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ThreadSafe
 @Service
 public class SimpleVacancyService implements VacancyService {
-    AtomicInteger atomic = new AtomicInteger(1);
     private final VacancyRepository vacancyRepository;
 
     public SimpleVacancyService(VacancyRepository vacancyRepository) {

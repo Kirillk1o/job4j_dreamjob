@@ -13,15 +13,14 @@ import static java.time.LocalDateTime.now;
 @ThreadSafe
 @Repository
 public class MemoryCandidateRepository implements CandidateRepository {
-    private final AtomicInteger atomic = new AtomicInteger(1);
     private int nextId = 1;
     private final Map<Integer, Candidate> candidates = new HashMap<>();
 
     public MemoryCandidateRepository() {
-        save(new Candidate(0, "Semen", "Java junior developer", now()));
-        save(new Candidate(0, "Petr", "Java junior developer", now()));
-        save(new Candidate(0, "Vladimir", "Java middle developer", now()));
-        save(new Candidate(0, "Timur", "Java senior developer", now()));
+        save(new Candidate(0, "Semen", "Java junior developer", now(), 0));
+        save(new Candidate(0, "Petr", "Java junior developer", now(), 0));
+        save(new Candidate(0, "Vladimir", "Java middle developer", now(), 0));
+        save(new Candidate(0, "Timur", "Java senior developer", now(), 0));
     }
 
     @Override
@@ -40,7 +39,7 @@ public class MemoryCandidateRepository implements CandidateRepository {
     public boolean update(Candidate candidate) {
         return candidates.computeIfPresent(
                 candidate.getId(), (id, oldCandidate) -> new Candidate(
-                        id, candidate.getName(), candidate.getDescription(), candidate.getCreationDate())) != null;
+                        id, candidate.getName(), candidate.getDescription(), candidate.getCreationDate(), candidate.getCityId())) != null;
     }
 
     @Override

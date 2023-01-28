@@ -12,7 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ThreadSafe
 @Repository
 public class SimpleCandidateService implements CandidateService {
-    AtomicInteger atomic = new AtomicInteger(1);
     private final CandidateRepository candidateRepository;
 
     public SimpleCandidateService(CandidateRepository candidateRepository) {
