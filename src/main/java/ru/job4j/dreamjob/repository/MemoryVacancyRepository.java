@@ -15,17 +15,17 @@ public class MemoryVacancyRepository implements VacancyRepository {
 
     public MemoryVacancyRepository() {
         save(new Vacancy(0, "Intern Java Developer",
-                "открытая вакансия для прохождения стажировки", now(), false, 0));
+                "открытая вакансия для прохождения стажировки", now(), false, 1, 0));
         save(new Vacancy(0, "Junior Java Developer",
-                "открытая вакансия для джуна", now(), false, 0));
+                "открытая вакансия для джуна", now(), false, 2, 0));
         save(new Vacancy(0, "Junior+ Java Developer",
-                "открытая вакансия для джуна с опытом", now(), false, 0));
+                "открытая вакансия для джуна с опытом", now(), false, 0, 0));
         save(new Vacancy(0, "Middle Java Developer",
-                "открытая вакансия для мидла", now(), false, 0));
+                "открытая вакансия для мидла", now(), false, 2, 0));
         save(new Vacancy(0, "Middle+ Java Developer",
-                "открытая вакансия для мидла от 2х лет опыта", now(), false, 0));
+                "открытая вакансия для мидла от 2х лет опыта", now(), false, 0, 0));
         save(new Vacancy(0, "Senior Java Developer",
-                "открытая вакансия для синьора", now(), false, 0));
+                "открытая вакансия для синьора", now(), false, 1, 0));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class MemoryVacancyRepository implements VacancyRepository {
         return vacancies.computeIfPresent(
                 vacancy.getId(), (id, oldVacancy) -> new Vacancy(
                         id, vacancy.getTitle(), vacancy.getDescription(),
-                        vacancy.getCreationDate(), vacancy.getVisible(), vacancy.getCityId()
+                        vacancy.getCreationDate(), vacancy.getVisible(), vacancy.getCityId(), vacancy.getFileId()
                 )) != null;
     }
 

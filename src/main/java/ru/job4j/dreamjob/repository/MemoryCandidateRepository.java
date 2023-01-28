@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
 import net.jcip.annotations.ThreadSafe;
 import static java.time.LocalDateTime.now;
 @ThreadSafe
@@ -17,10 +16,10 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final Map<Integer, Candidate> candidates = new HashMap<>();
 
     public MemoryCandidateRepository() {
-        save(new Candidate(0, "Semen", "Java junior developer", now(), 0));
-        save(new Candidate(0, "Petr", "Java junior developer", now(), 0));
-        save(new Candidate(0, "Vladimir", "Java middle developer", now(), 0));
-        save(new Candidate(0, "Timur", "Java senior developer", now(), 0));
+        save(new Candidate(0, "Semen", "Java junior developer", now(), 1, 0));
+        save(new Candidate(0, "Petr", "Java junior developer", now(), 2, 0));
+        save(new Candidate(0, "Vladimir", "Java middle developer", now(), 0, 0));
+        save(new Candidate(0, "Timur", "Java senior developer", now(), 1, 0));
     }
 
     @Override
@@ -39,7 +38,8 @@ public class MemoryCandidateRepository implements CandidateRepository {
     public boolean update(Candidate candidate) {
         return candidates.computeIfPresent(
                 candidate.getId(), (id, oldCandidate) -> new Candidate(
-                        id, candidate.getName(), candidate.getDescription(), candidate.getCreationDate(), candidate.getCityId())) != null;
+                        id, candidate.getName(), candidate.getDescription(),
+                        candidate.getCreationDate(), candidate.getCityId(), candidate.getFileId())) != null;
     }
 
     @Override
