@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import ru.job4j.dreamjob.configuration.DatasourceConfiguration;
 import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.model.File;
-import ru.job4j.dreamjob.model.Vacancy;
 
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -35,15 +34,11 @@ public class Sql2oCandidateRepositoryTest {
         var url = properties.getProperty("datasource.url");
         var username = properties.getProperty("datasource.username");
         var password = properties.getProperty("datasource.password");
-
         var configuration = new DatasourceConfiguration();
         var datasource = configuration.connectionPool(url, username, password);
         var sql2o = configuration.databaseClient(datasource);
-
         sql2oCandidateRepository = new Sql2oCandidateRepository(sql2o);
         sql2oFileRepository = new Sql2oFileRepository(sql2o);
-
-        // нужно сохранить хотя бы один файл, т.к. Candidate от него зависит
         file = new File("test", "test");
         sql2oFileRepository.save(file);
     }
