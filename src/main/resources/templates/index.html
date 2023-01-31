@@ -17,7 +17,7 @@
         <div class="container">
             <a class="navbar-brand" href="/">Job4jDreamJob</a>
             <div class="collapse navbar-collapse">
-                <div class="navbar-nav">
+                <div class="navbar-nav me-auto">
                     <a class="nav-item nav-link active" href="/">Главная</a>
                     <a class="nav-item nav-link" th:href="@{/vacancies}">Вакансии</a>
                     <a class="nav-item nav-link" th:href="@{/candidates}">Кандидаты</a>
@@ -25,15 +25,19 @@
                     <a class="nav-item nav-link" th:href="@{/candidates/create}">Создать Резюме</a>
                 </div>
             </div>
+            <div class="d-flex">
+                <a class="nav-link text-secondary" th:href="@{/users/register}">Регистрация</a>
+            </div>
         </div>
     </nav>
     <div class="container mt-2">
-        <h3>Проект job4j_dreamjob, выполняемый в рамках курса Job4j</h3>
+        <h3>Проект job4j_dreamjob</h3>
         <ul>
             <li><a th:href="@{/vacancies}">Вакансии</a></li>
             <li><a th:href="@{/candidates}">Кандидаты</a></li>
             <li><a th:href="@{/vacancies/create}">Создать Вакансию</a></li>
             <li><a th:href="@{/candidates/create}">Создать Резюме</a></li>
+            <li><a th:href="@{/users/registration}">Регистрация</a></li>
         </ul>
     </div>
 </div>
